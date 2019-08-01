@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Demo Site</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="../static/demo_site/css/bootstrap.min.css" />
+
+	<!-- Owl Carousel -->
+	<link type="text/css" rel="stylesheet" href="../static/demo_site/css/owl.carousel.css" />
+	<link type="text/css" rel="stylesheet" href="../static/demo_site/css/owl.theme.default.css" />
+
+	<!-- Magnific Popup -->
+	<link type="text/css" rel="stylesheet" href="../static/demo_site/css/magnific-popup.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="../static/demo_site/css/font-awesome.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="../static/demo_site/css/style.css" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+
+	<!-- Header -->
+	<header>
+
+		<!-- Nav -->
+		<nav id="nav" class="navbar">
+			<div class="container">
+
+				<div class="navbar-header">
+					<!-- Logo -->
+					<div class="navbar-brand">
+						<a href="index.html">
+							<img class="logo" src="../static/demo_site/img/logo.png" alt="logo">
+						</a>
+					</div>
+					<!-- /Logo -->
+
+					<!-- Collapse nav button -->
+					<div class="nav-collapse">
+						<span></span>
+					</div>
+					<!-- /Collapse nav button -->
+				</div>
+
+				<!--  Main navigation  -->
+				<!-- /Main navigation -->
+
+			</div>
+		</nav>
+		<!-- /Nav -->
+
+		<!-- header wrapper -->
+		<div class="header-wrapper bg-grey">
+			<div class="container" style="text-align: center; font-size: 50px;">
+				<h2 style="font-size: 60px;">Demo Website for API</h2>
+			</div>
+		</div>
+		<!-- /header wrapper -->
+
+	</header>
+	<!-- /Header -->
+
+	<!-- Contact -->
+	<div id="contact" class="section md-padding">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Section-header -->
+				<div class="section-header text-center">
+					<h2 class="title">Enter your Details</h2>
+				</div>
+				<!-- /Section-header -->
+
+
+				<!-- contact form -->
+
+				<div id="A">
+					<div class="col-md-8 col-md-offset-2">
+						<form action="" class="contact-form" method="post" name="sign up for beta form" enctype = "multipart/form-data">
+							<input type="text" class="input" placeholder="Your Name" name="AccountName">
+							<input type="email" class="input" placeholder="Your Email" name="Email">
+
+							<label class="input-group-btn" style="float:left; display:inline-block;">
+							<span class=" btn btn-primary" style="float:left; display:inline-block;">
+								Choose File<input multiple type="file" class="input" name="Docfile_AR" id="Docfile_AR" style="display: none;" >
+							</span>
+							</label>
+							<input type="text" style="width:83%; float:right; display:inline-block;" id="ar_input" placeholder="Select Files to upload..." readonly>
+						    </br></br></br>
+
+							<button class="main-btn">Submit</button>
+						</form>
+					</div>
+				</div>
+				<!-- /contact form -->
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+	<!-- /Contact -->
+
+	<!-- Back to top -->
+	<div id="back-to-top"></div>
+	<!-- /Back to top -->
+
+	<!-- Preloader -->
+	<div id="preloader">
+		<div class="preloader">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!-- /Preloader -->
+
+	<!-- jQuery Plugins -->
+	<script type="text/javascript" src="../static/demo_site/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../static/demo_site/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../static/demo_site/js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="../static/demo_site/js/jquery.magnific-popup.js"></script>
+	<script type="text/javascript" src="../static/demo_site/js/main.js"></script>
+	<script language="javascript" type="text/javascript">
+	  $(window).on('load', function(){ $('#loading').hide();})
+	  $('#submit_form').submit(function() {console.log("ABC");$('#loading').show();})
+	</script>
+
+	<script language="javascript" type="text/javascript">
+	  $(window).on('load', function(){ $('#loading').hide();})
+	  $('#submit_form').submit(function() {console.log("ABC");$('#loading').show();})
+	  $(function() {
+
+	  // We can attach the `fileselect` event to all file inputs on the page
+	  $(document).on('change', ':file', function() {
+		var input = $(this),
+			numFiles = input.get(0).files ? input.get(0).files.length : 1,
+			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+		input.trigger('fileselect', [numFiles, label]);
+	  });
+
+	  // We can watch for our custom `fileselect` event like this
+	  $(document).ready( function() {
+		  $('#Docfile_AR').on('fileselect', function(event, numFiles, label) {
+			console.log("DEF");
+			  var ar_input = $('#ar_input'),
+				  log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+			  if( ar_input.length ) {
+				  ar_input.val(log);
+			  } else {
+				  if( log ) alert(log);
+			  }
+		  });
+		  $('#Docfile_ECT').on('fileselect', function(event, numFiles, label) {
+			console.log("DEF");
+			  var ar_input = $('#ect_input'),
+				  log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+			  if( ar_input.length ) {
+				  ar_input.val(log);
+			  } else {
+				  if( log ) alert(log);
+			  }
+		  });
+		  $('#Docfile_IPT').on('fileselect', function(event, numFiles, label) {
+			console.log("DEF");
+			  var ar_input = $('#ipt_input'),
+				  log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+			  if( ar_input.length ) {
+				  ar_input.val(log);
+			  } else {
+				  if( log ) alert(log);
+			  }
+		  });
+		  $('#Docfile_10K').on('fileselect', function(event, numFiles, label) {
+			console.log("DEF");
+			  var ar_input = $('#10K_input'),
+				  log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+			  if( ar_input.length ) {
+				  ar_input.val(log);
+			  } else {
+				  if( log ) alert(log);
+			  }
+		  });
+		  $('#Docfile_strat').on('fileselect', function(event, numFiles, label) {
+			console.log("DEF");
+			  var ar_input = $('#strat_input'),
+				  log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+			  if( ar_input.length ) {
+				  ar_input.val(log);
+			  } else {
+				  if( log ) alert(log);
+			  }
+		  });
+	  });
+	  
+	});
+	</script>
+
+</body>
+
+</html>
