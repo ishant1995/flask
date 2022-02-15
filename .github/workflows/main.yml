@@ -21,6 +21,5 @@ jobs:
           
       - name: my-step
         run: |
-          aws s3 ls
           date
 
