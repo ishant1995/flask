@@ -7,7 +7,7 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
+      - name: Install eksctl and aws cli
         run: |
           curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
           sudo mv /tmp/eksctl /usr/local/bin
@@ -19,7 +19,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
-      - name: Uodate kube-config
+      - name: Update kube-config
         run: |
          aws  eks --region ap-south-1  update-kubeconfig --name cloudifytests
          eksctl scale nodegroup --cluster=cloudifytests --nodes=1 --name=cloudbrowser  --nodes-min=1  --nodes-max=70
