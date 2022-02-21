@@ -22,6 +22,8 @@ jobs:
       - name: Uodate kube-config
         run: |
          aws  eks --region ap-south-1  update-kubeconfig --name cloudifytests
+         eksctl scale nodegroup --cluster=cloudifytests --nodes=1 --name=cloudbrowser  --nodes-min=1  --nodes-max=70
+         eksctl scale nodegroup --cluster=cloudifytests --nodes=1 --name=userapp  --nodes-min=1  --nodes-max=5
          
           
 
