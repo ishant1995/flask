@@ -1,0 +1,27 @@
+#
+name: Scale_up
+on:
+   schedule:
+      - cron: '0 04 * * 1-5'
+   workflow_dispatch
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install eksctl and aws cli
+        run: |
+          curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+          sudo mv /tmp/eksctl /usr/local/bin
+          sudo apt-get install awscli
+          aws --version
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+      - name: Update kube-config
+        run: |
+         aws  eks --region ap-south-1  update-kubeconfig --name cloudifytests
+         eksctl scale nodegroup --cluster=cloudifytests --nodes=1 --name=cloudbrowser  --nodes-min=1  --nodes-max=10
+         eksctl scale nodegroup --cluster=cloudifytests --nodes=1 --name=userapp  --nodes-min=1  --nodes-max=2
