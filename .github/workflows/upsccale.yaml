@@ -3,7 +3,6 @@ name: Scale_up
 on:
    schedule:
       - cron: '0 04 * * 1-5'
-   workflow_dispatch
 jobs:
   my-job:
     runs-on: ubuntu-latest
