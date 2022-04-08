@@ -2,7 +2,6 @@ name: Scale_down
 on:
     schedule:
        - cron: '30 15 * * 1-5'
-   workflow_dispatch
 jobs:
   my-job:
     runs-on: ubuntu-latest
