@@ -24,3 +24,9 @@ jobs:
          aws  eks --region ap-south-1  update-kubeconfig --name cloudifytests
          eksctl scale nodegroup --cluster=cloudifytests --nodes=1 --name=cloudbrowser  --nodes-min=1  --nodes-max=10
          eksctl scale nodegroup --cluster=cloudifytests --nodes=1 --name=userapp  --nodes-min=1  --nodes-max=2
+         eksctl get nodegroup --cluster cloudifytests
+         aws  eks --region ap-south-1  update-kubeconfig --name stg-cloudifytests
+         eksctl scale nodegroup --cluster=cloudifytests --nodes=1 --name=cloudbrowser  --nodes-min=1  --nodes-max=10
+         eksctl scale nodegroup --cluster=cloudifytests --nodes=1 --name=userapp  --nodes-min=1  --nodes-max=2
+         eksctl get nodegroup --cluster stg-cloudifytests
+         
